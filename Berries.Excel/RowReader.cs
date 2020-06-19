@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Xml;
 
 namespace Berries.Excel
 {
-    public class ExcelRowReader : IDisposable
+    public class RowReader : IDisposable
     {
         private XmlReader _reader;
         private Stream _stream;
         private Worksheet _worksheet;
 
-        public static ExcelRowReader Create(Worksheet worksheet)
+        public Row Row { get; private set; }
+
+        public static RowReader Create(Worksheet worksheet)
         {
-            return new ExcelRowReader(worksheet);
+            return new RowReader(worksheet);
         }
 
-        private ExcelRowReader(Worksheet worksheet)
+        private RowReader(Worksheet worksheet)
         {
             _worksheet = worksheet;
             _stream = worksheet.ArchiveEntry.Open();
@@ -128,9 +129,6 @@ namespace Berries.Excel
 
             return true;
         }
-
-
-        public Row Row { get; private set; }
 
         public void Dispose()
         {

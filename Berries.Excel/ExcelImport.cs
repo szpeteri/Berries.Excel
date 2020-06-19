@@ -32,7 +32,7 @@ namespace Berries.Excel
 
                 var rowsToSkip = firstDataRow - 1;
 
-                using (var reader = ExcelRowReader.Create(worksheet))
+                using (var reader = RowReader.Create(worksheet))
                 {
                     while (rowsToSkip > 0 && reader.Read())
                     {
@@ -62,38 +62,5 @@ namespace Berries.Excel
 
             return result;
         }
-
-        //private T ProcessRow(ExcelWorksheet worksheet, int rowIndex)
-        //{
-        //    var result = new T();
-        //    foreach (var map in ColumnMapList)
-        //    {
-        //        if (worksheet.Cells[rowIndex, map.ColumnIndex].Value != null)
-        //        {
-        //            var value = worksheet.Cells[rowIndex, map.ColumnIndex].Value.ToString();
-
-        //            map.Action(result, value);
-        //        }
-
-        //    }
-
-        //    return result;
-        //}
-
-        //private string GetExcelColumnName(int columnNumber)
-        //{
-        //    int dividend = columnNumber;
-        //    string columnName = String.Empty;
-        //    int modulo;
-
-        //    while (dividend > 0)
-        //    {
-        //        modulo = (dividend - 1) % 26;
-        //        columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
-        //        dividend = (int)((dividend - modulo) / 26);
-        //    }
-
-        //    return columnName;
-        //}
     }
 }

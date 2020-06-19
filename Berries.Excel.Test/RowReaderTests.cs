@@ -29,7 +29,7 @@ namespace Berries.Excel.Test
         public void FirstRow(int cellIndex, string address, string value)
         {
             // Arrange
-            var reader = ExcelRowReader.Create(_package.Workbook[FirstSheetName]);
+            var reader = RowReader.Create(_package.Workbook[FirstSheetName]);
 
             // Act
             var result = reader.Read();
@@ -49,7 +49,7 @@ namespace Berries.Excel.Test
         public void SecondRow(int cellIndex, string address, string value)
         {
             // Arrange
-            var reader = ExcelRowReader.Create(_package.Workbook[FirstSheetName]);
+            var reader = RowReader.Create(_package.Workbook[FirstSheetName]);
 
             // Act
             reader.Read();
